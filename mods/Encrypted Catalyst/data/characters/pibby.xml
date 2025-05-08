@@ -1,12 +1,12 @@
 <!DOCTYPE codename-engine-character>
-<character sprite="pibby" isPlayer="true" icon="icon-pibby" color="#CA56B4" holdTime="8">
+<character sprite="pibby" icon="icon-pibby" color="#CA56B4" holdTime="8">
 	<anim name="idle" anim="Idle" x="0" y="0" fps="24" loop="false"/>
-	<anim name="singUP" anim="Up" x="-25" y="269" fps="24" loop="false"/>
-	<anim name="singLEFT" anim="Left" x="-35" y="-10" fps="24" loop="false"/>
-	<anim name="singRIGHT" anim="Right" x="229" y="-2" fps="24" loop="false"/>
-	<anim name="singDOWN" anim="Down" x="-15" y="-5" fps="24" loop="false"/>
-	<anim name="singUPmiss" anim="MissU" x="-26" y="264" fps="24" loop="false"/>
-	<anim name="singLEFTmiss" anim="MissL" x="-33" y="100" fps="24" loop="false"/>
-	<anim name="singRIGHTmiss" anim="MissR" x="220" y="0" fps="24" loop="false"/>
-	<anim name="singDOWNmiss" anim="MissD" x="-45" y="-40" fps="24" loop="false"/>
+	<anim name="singUP" anim="Up" x="42" y="269" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="Left" x="325" y="-10" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="Right" x="9" y="-2" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="Down" x="280" y="-10" fps="24" loop="false"/>
+	<anim name="singUPmiss" anim="MissU" x="44" y="264" fps="24" loop="false"/>
+	<anim name="singLEFTmiss" anim="MissL" x="322" y="100" fps="24" loop="false"/>
+	<anim name="singRIGHTmiss" anim="MissR" x="30" y="0" fps="24" loop="false"/>
+	<anim name="singDOWNmiss" anim="MissD" x="275" y="-30" fps="24" loop="false"/>
 </character>

@@ -1,0 +1,37 @@
+addons/stageEditor/README.md
+addons/stageEditor/images/editors/stage/switch-button.png
+addons/stageEditor/images/editors/stage/node-button.png
+addons/stageEditor/images/editors/stage/invis-button.png
+addons/stageEditor/data/states/stageEditor/SwitchScreen.hxs
+addons/stageEditor/data/states/stageEditor/StageEdit.hxs
+addons/stageEditor/data/states/stageEditor/StageDataScreen.hxs
+addons/stageEditor/data/states/stageEditor/sprites/SpriteScreen.hxs
+addons/stageEditor/data/states/stageEditor/sprites/PropertyScreen.hxs
+addons/stageEditor/data/states/stageEditor/sprites/ComboPosScreen.hxs
+addons/stageEditor/data/states/stageEditor/sprites/CharPosScreen.hxs
+addons/stageEditor/data/states/stageEditor/sprites/BoxScreen.hxs
+addons/stageEditor/data/states/stageEditor/selector/StageSelector.hxs
+addons/stageEditor/data/states/stageEditor/selector/NewStage.hxs
+addons/stageEditor/data/states/stageEditor/MoveableDropdown.hxs
+addons/stageEditor/data/states/EditorPicker.hx
+addons/Codename New Character/source/CharacterAnimInfoButton.hx
+addons/Codename New Character/data/states/newCharacter/CharacterCreationScreen.hx
+addons/Codename New Character/data/states/CharacterSelection.hx
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_01-42.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_10-58.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-03.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-08.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-13.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-18.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-23.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-28.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-33.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-38.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-43.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-48.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-53.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_11-58.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_12-03.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_12-08.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_12-13.json
+mods/Encrypted Catalyst/songs/Hamartia/autosaves/normal05-08_12-18.json
