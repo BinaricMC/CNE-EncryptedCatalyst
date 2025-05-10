@@ -1,11 +1,11 @@
 {
 	"beatsPerMeasure": 4,
-	"opponentModeAllowed": true,
-	"coopAllowed": true,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
 	"stepsPerBeat": 4,
 	"bpm": 180,
 	"difficulties": [
-		"normal"
+		"Normal"
 	],
 	"needsVoices": true,
 	"parsedColor": -2993664,
