@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": false,
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"bpm": 191,
+	"difficulties": [
+		"Normal"
+	],
+	"needsVoices": true,
+	"parsedColor": -13065772,
+	"displayName": "Adventure To Remember",
+	"icon": "icon-ecfinn",
+	"name": "Adventure To Remember",
+	"color": "#38A1D4"
+}

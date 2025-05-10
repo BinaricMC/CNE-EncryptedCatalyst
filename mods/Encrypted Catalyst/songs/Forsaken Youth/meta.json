@@ -1,0 +1,16 @@
+{
+	"beatsPerMeasure": 4,
+	"opponentModeAllowed": true,
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"bpm": 180,
+	"difficulties": [
+		"normal"
+	],
+	"needsVoices": true,
+	"parsedColor": -2993664,
+	"displayName": "Forsaken Youth",
+	"icon": "icon-ecdarwin",
+	"name": "Forsaken Youth",
+	"color": "#D25200"
+}
