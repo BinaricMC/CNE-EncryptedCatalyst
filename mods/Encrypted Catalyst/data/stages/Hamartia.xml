@@ -7,7 +7,7 @@
 	<sprite scale="1.5" name="Trees2" sprite="stages/hamartia/TreesBG2" scrollx="1.1"/>
 	<sprite scale="1.5" name="Trees3" sprite="stages/hamartia/TreesFG" scrollx="1.05"/>
 	<sprite scale="1.5" name="StageTrees" sprite="stages/hamartia/StageTrees"/>
-	<gf camxoffset="-380" camyoffset="-30" x="1220" scrolly="1" y="626" scrollx="1.01"/>
+	<gf camxoffset="-440" camyoffset="-90" x="1220" scrolly="1" y="626" scrollx="1.01"/>
 	<dad x="226" y="481"/>
 	<bf camxoffset="-70" x="1200" y="375"/>
 	<sprite x="0" sprite="stages/hamartia/DecoFG" y="0" scale="1.5" name="DecoFG"/>
