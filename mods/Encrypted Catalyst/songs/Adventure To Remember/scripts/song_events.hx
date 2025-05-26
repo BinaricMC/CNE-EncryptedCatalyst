@@ -17,3 +17,7 @@ function stepHit(curStep:Int) {
     }
 }
 
+function postCreate() {
+    gf.visible = false;
+}
+
