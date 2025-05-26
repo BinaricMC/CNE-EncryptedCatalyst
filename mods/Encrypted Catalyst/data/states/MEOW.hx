@@ -8,7 +8,7 @@ var adSelectedTxt:FlxText;
 var camFollow:FlxObject;
 
 var bg:FlxSprite;
-var btns:Array<FlxButton>;
+var btns:Array<FlxButton> = [];
 
 /*
 [
@@ -23,16 +23,13 @@ function create() {
     bg.scrollFactor.set(0.9, 0.9);
     bg.screenCenter();
     add(bg);
-
-    var dark:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width * 1.1, FlxG.height * 1.1, FlxColor.BLACK);
-    add(dark);
-    dark.screenCenter();
-    dark.alpha = 0.6;
+    bg.antialiasing = true;
 
     adSelectedTxt = new FlxText(0, FlxG.height * 0.825, FlxG.width, "Testing testing 123", 24);
     adSelectedTxt.alignment = 'center';
     adSelectedTxt.scrollFactor.set(0.8, 0.8);
     add(adSelectedTxt);
+    adSelectedTxt.antialiasing = true;
 
     adsList = CoolUtil.parseJson('data/modAds.json');
     trace(adsList);
@@ -108,4 +105,6 @@ function update(elapsed:Float){
     if (controls.LEFT_P) changeAd(-1);
     if (controls.RIGHT_P) changeAd(1);
     if (controls.ACCEPT) selectAd(0);
+
+    if (controls.BACK) FlxG.switchState(new MainMenuState());
 }
