@@ -1,4 +1,5 @@
 import flixel.FlxObject;
+import flixel.ui.FlxButton;
 
 var adsList:Array<Dynamic> = [];
 var curAdSelected:Int = 0;
@@ -7,6 +8,7 @@ var adSelectedTxt:FlxText;
 var camFollow:FlxObject;
 
 var bg:FlxSprite;
+var btns:Array<FlxButton>;
 
 /*
 [
@@ -27,15 +29,9 @@ function create() {
     dark.screenCenter();
     dark.alpha = 0.6;
 
-    var bg2 = new FlxSprite(0, 0).loadGraphic(Paths.image('menus/titlescreen/newgrounds_logo'));
-    bg2.scrollFactor.set(0.4, 0.4);
-    add(bg2);
-
-    adSelectedTxt = new FlxText(0, 0, FlxG.width, "Testing testing 123", 32);
-    adSelectedTxt.size = 50;
+    adSelectedTxt = new FlxText(0, FlxG.height * 0.825, FlxG.width, "Testing testing 123", 24);
     adSelectedTxt.alignment = 'center';
-    adSelectedTxt.screenCenter();
-    adSelectedTxt.scrollFactor.set(0, 0);
+    adSelectedTxt.scrollFactor.set(0.8, 0.8);
     add(adSelectedTxt);
 
     adsList = CoolUtil.parseJson('data/modAds.json');
@@ -48,6 +44,36 @@ function create() {
 
     FlxG.camera.follow(camFollow, 0.005);
     FlxG.mouse.visible = true;
+
+    makeButtons(function() {
+        selectAd(0);
+    }, "youtube", [0, 0]);
+
+    makeButtons(function() {
+        selectAd(1);
+    }, "twitter", [100, 0]);
+
+    makeButtons(function() {
+        selectAd(2);
+    }, "gamejolt", [200, 0]);
+
+    makeButtons(function() {
+        selectAd(3);
+    }, "gamebanana", [300, 0]);
+}
+
+function makeButtons(func:Void->Void, serv:String, pos:Array<Float>) {
+    var btn = new FlxButton(pos[0], pos[1], "haiiii :3 " + serv, func);
+    loadBtn(btn, serv);
+    btn.label.visible = false;
+    add(btn);
+    btns.push(btn);
+}
+
+function loadBtn(btn:FlxButton, serv:String) {
+    btn.loadGraphic(Paths.image('menus/advert/' + serv));
+    btn.setGraphicSize(75, 75);
+    btn.updateHitbox();
 }
 
 function changeAd(e:Int){
@@ -69,17 +95,17 @@ function loadImg() {
     bg.screenCenter();
 }
 
-function selectAd(){
-    var url = adsList[curAdSelected][1];
+function selectAd(service:Int){
+    var url = adsList[curAdSelected][1][service];
 
     if (url != null) CoolUtil.openURL(url);
-    else trace('No URL in json, do nothing');
+    else trace('No URL in json array\'s index ' + service + ', do nothing');
 }
 
 function update(elapsed:Float){
-    camFollow.setPosition((FlxG.width - (FlxG.mouse.x / 90)) / 2, (FlxG.height - (FlxG.mouse.y / 90)) / 2);
+    camFollow.setPosition((FlxG.width - (FlxG.mouse.x / 90)) / 2, ((FlxG.height - (FlxG.mouse.y / 90)) / 2) + 35);
 
     if (controls.LEFT_P) changeAd(-1);
     if (controls.RIGHT_P) changeAd(1);
-    if (controls.ACCEPT) selectAd();
+    if (controls.ACCEPT) selectAd(0);
 }
