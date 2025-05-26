@@ -1,19 +1,9 @@
-function onStartCountdown(event) {
-    event.cancel(true);
-
-    startSong();
-    startedCountdown = true;
-}
-
-function stepHit(curStep:Int) {
-    switch(curStep) {
-        case 2656:
+function beatHit(e:Int) {
+    switch(e) {
+        case 664:
             boyfriend.visible = false;
             gf.visible = true;
-
-        case 5376:
-          boyfriend.visible = true;  
-
+        case 1344: boyfriend.visible = true;  
     }
 }
 
