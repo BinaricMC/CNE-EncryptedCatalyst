@@ -19,6 +19,7 @@ var btns:Array<FlxButton> = [];
 */
 
 function create() {
+    FlxG.sound.playMusic(Paths.music("creditstheme"), 0.7); // PLACEHOLDER LMAO
     bg = new FlxSprite(0, 0);
     bg.scrollFactor.set(0.9, 0.9);
     bg.screenCenter();
@@ -106,5 +107,11 @@ function update(elapsed:Float){
     if (controls.RIGHT_P) changeAd(1);
     if (controls.ACCEPT) selectAd(0);
 
-    if (controls.BACK) FlxG.switchState(new MainMenuState());
+    if (controls.BACK) {
+        
+        FlxG.sound.music.fadeOut(1, 0, t -> {
+            FlxG.switchState(new MainMenuState());
+
+        });
+    }
 }

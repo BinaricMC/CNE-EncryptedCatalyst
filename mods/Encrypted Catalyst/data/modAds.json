@@ -1,19 +1,37 @@
 [
     [
         "Pibby: Apocalypse",
-        ["https://www.youtube.com/watch?v=AhBYB4NfDlg", "https://x.com/FunkinPibby"],
+        ["https://www.youtube.com/watch?v=ENLsLhY8JNk", "https://x.com/FunkinPibby", "https://gamejolt.com/games/Pibby/786001", "https://gamebanana.com/wips/73842"],
         "pa"
     ],
 
     [
         "Funk Archive: Unnamed BA Oneshot",
-        ["https://www.youtube.com/watch?v=KIsa7i5hJ58"],
+        ["https://www.youtube.com/watch?v=DEQSXQCVYpc", "", "", "https://gamebanana.com/mods/496238"],
         "bluearchive"
     ],
 
     [
         "Pibby Corrupted",
-        [],
+        ["https://www.youtube.com/watch?v=qMDPooCLAks", "https://x.com/PibbyFunkin", "", "https://gamebanana.com/mods/344757"],
         "pc"
+    ],
+
+    [
+        "Rogue Transmission",
+        ["https://www.youtube.com/watch?v=CV4dwSpS_l4", "https://x.com/FridayRogue", "", ""],
+        "roguetransmission"
+    ],
+
+    [
+        "Pibby Oggy",
+        ["https://www.youtube.com/watch?v=0vSXW8tlgdc", "https://x.com/PibbyOggy", "https://gamejolt.com/games/Oggy/713759", ""],
+        "pibbyoggy"
+    ],
+
+    [
+        "Project 2010",
+        ["https://www.youtube.com/watch?v=2KWwX9s1t_c", "https://x.com/Project_CN_", "", ""],
+        "2010"
     ]
 ]
