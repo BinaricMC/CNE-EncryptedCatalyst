@@ -28,7 +28,7 @@ function postUpdate() {
         defaultCamZoom = 0.75;
     }
     else if (curCameraTarget == 2) {
-        defaultCamZoom = 0.84;
+        defaultCamZoom = 0.82;
     }
 
 
@@ -36,7 +36,6 @@ function postUpdate() {
 
 function postCreate() {
     FlxG.camera.followLerp *= 2;
-    gf.visible = false;
 
 }
      

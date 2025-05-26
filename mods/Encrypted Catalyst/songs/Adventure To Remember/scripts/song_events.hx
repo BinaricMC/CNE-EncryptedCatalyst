@@ -7,3 +7,7 @@ function beatHit(e:Int) {
     }
 }
 
+function postCreate() {
+    gf.visible = false;
+}
+
