@@ -47,19 +47,19 @@ function create() {
 
     makeButtons(function() {
         selectAd(0);
-    }, "youtube", [0, 0]);
+    }, "youtube", [25, 625]);
 
     makeButtons(function() {
         selectAd(1);
-    }, "twitter", [100, 0]);
+    }, "twitter", [125, 625]);
 
     makeButtons(function() {
         selectAd(2);
-    }, "gamejolt", [200, 0]);
+    }, "gamejolt", [1075, 625]);
 
     makeButtons(function() {
         selectAd(3);
-    }, "gamebanana", [300, 0]);
+    }, "gamebanana", [1175, 625]);
 }
 
 function makeButtons(func:Void->Void, serv:String, pos:Array<Float>) {
