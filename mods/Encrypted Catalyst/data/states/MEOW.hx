@@ -108,10 +108,8 @@ function update(elapsed:Float){
     if (controls.ACCEPT) selectAd(0);
 
     if (controls.BACK) {
-        
         FlxG.sound.music.fadeOut(1, 0, t -> {
             FlxG.switchState(new MainMenuState());
-
         });
     }
 }
