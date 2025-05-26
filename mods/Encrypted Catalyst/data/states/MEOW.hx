@@ -2,12 +2,12 @@ import flixel.FlxObject;
 import flixel.ui.FlxButton;
 
 var adsList:Array<Dynamic> = [];
+var adImages:Array<FlxSprite> = [];
 var curAdSelected:Int = 0;
 
 var adSelectedTxt:FlxText;
 var camFollow:FlxObject;
 
-var bg:FlxSprite;
 var btns:Array<FlxButton> = [];
 
 /*
@@ -20,20 +20,16 @@ var btns:Array<FlxButton> = [];
 
 function create() {
     FlxG.sound.playMusic(Paths.music("creditstheme"), 0.7); // PLACEHOLDER LMAO
-    bg = new FlxSprite(0, 0);
-    bg.scrollFactor.set(0.9, 0.9);
-    bg.screenCenter();
-    add(bg);
-    bg.antialiasing = true;
 
     adSelectedTxt = new FlxText(0, FlxG.height * 0.825, FlxG.width, "Testing testing 123", 24);
     adSelectedTxt.alignment = 'center';
-    adSelectedTxt.scrollFactor.set(0.8, 0.8);
+    adSelectedTxt.scrollFactor.set(0, 0);
     add(adSelectedTxt);
     adSelectedTxt.antialiasing = true;
 
     adsList = CoolUtil.parseJson('data/modAds.json');
-    trace(adsList);
+
+    for (i in 0...adsList.length) loadImg(adsList[i][2], i*1200);
 
     changeAd(0);
 
@@ -79,18 +75,22 @@ function changeAd(e:Int){
 
     adSelectedTxt.text = adsList[curAdSelected][0];
     adSelectedTxt.screenCenter(FlxAxes.X);
-
-    loadImg();
 }
 
-function loadImg() {
-    var img = adsList[curAdSelected][2];
+function loadImg(img:Dynamic, x:Float) {
+    var bg = new FlxSprite(0, 0);
+
     bg.loadGraphic(Paths.image('menus/advert/banner/' + img));
 
     bg.setGraphicSize(FlxG.width * 0.6, FlxG.height * 0.6);
-    bg.updateHitbox();
 
     bg.screenCenter();
+
+    bg.x += x;
+
+    add(bg);
+
+    adImages.push(bg);
 }
 
 function selectAd(service:Int){
@@ -100,8 +100,10 @@ function selectAd(service:Int){
     else trace('No URL in json array\'s index ' + service + ', do nothing');
 }
 
+var lerpSpeed = 0.3;
+
 function update(elapsed:Float){
-    camFollow.setPosition((FlxG.width - (FlxG.mouse.x / 90)) / 2, ((FlxG.height - (FlxG.mouse.y / 90)) / 2) + 35);
+    camFollow.setPosition(CoolUtil.fpsLerp(camFollow.x, adImages[curAdSelected].getGraphicMidpoint().x, lerpSpeed), ((FlxG.height + (FlxG.mouse.y / 90)) / 2) + 35);
 
     if (controls.LEFT_P) changeAd(-1);
     if (controls.RIGHT_P) changeAd(1);
@@ -110,7 +112,9 @@ function update(elapsed:Float){
     if (controls.BACK) {
         FlxG.sound.music.fadeOut(1, 0, t -> {
             FlxG.switchState(new MainMenuState());
-
         });
+
+        FlxTween(camera, {zoom: 1.2}, 1, {ease: FlxEase.sineOut, type: FlxTween.ONESHOT});
+        camera.fade(FlxColor.BLACK, 0.95);
     }
 }
