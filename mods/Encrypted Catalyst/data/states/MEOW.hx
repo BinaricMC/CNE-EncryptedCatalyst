@@ -7,7 +7,7 @@ var curAdSelected:Int = 0;
 
 var adImages:FlxGroup;
 
-var adSelectedTxt:FlxText;
+var adSelectedTxt:FlxTypeText;
 var camFollow:FlxObject;
 
 var btns:Array<FlxButton> = [];
@@ -39,7 +39,6 @@ function create() {
     camFollow = new FlxObject(0, 0, 1, 1);
     add(camFollow);
 
-    camFollow.x = adImages.members[curAdSelected].getMidpoint().x;
     camFollow.y = 400;
 
     FlxG.camera.follow(camFollow, null, 0.2); // added the null otherwise the lerp would default to 1
@@ -124,25 +123,8 @@ function selectAd(service:Int){
     else trace('No URL in json array\'s index ' + service + ', do nothing');
 }
 
-// PLEASE FIX THIS CODE ITS VERY BROKEN
-var intensity = 10;
-var offsetLerpSpeed = 0.1;
-
-function adaMethod() {
-    var lots = 4 - 3.935; // why are we defining this every update-
-
-    // I fucking love BIDMAS, or PIMDAS, or however tf you Americans say it
-    var camPos = [
-        ((FlxG.mouse.x * intensity) / FlxG.width) - ((FlxG.width / intensity) * (lots)),
-        ((FlxG.mouse.y * intensity) / FlxG.height)
-    ];
-    // Let's lerp again, because FlxCamera's lerp doesn't do shit
-    camera.targetOffset.x = CoolUtil.fpsLerp(camera.targetOffset.x, camPos[0], offsetLerpSpeed);
-    camera.targetOffset.y = CoolUtil.fpsLerp(camera.targetOffset.y, camPos[1], offsetLerpSpeed);
-}
-
 function update(elapsed:Float) {
-    adaMethod();
+    // Scrapping mouse camera movement until I find a better way to do it because IT. IS. HELL.
 
     // Controls stuff
     if (controls.LEFT_P) changeAd(-1);
