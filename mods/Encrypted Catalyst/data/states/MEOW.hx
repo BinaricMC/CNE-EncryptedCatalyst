@@ -20,7 +20,6 @@ var typeSpeed:Float = 0.03;
 
 function create() {
     camera.flash(FlxColor.BLACK, 1);
-    FlxG.sound.playMusic(Paths.music("creditstheme"), 0.5); 
 
     adSelectedTxt = new FlxText(0, FlxG.height * 0.825, FlxG.width, "Testing testing 123", 24);
     adSelectedTxt.scrollFactor.set(0, 0);
@@ -132,7 +131,9 @@ function update(elapsed:Float){
 
     if (controls.BACK) {
         FlxG.sound.music.fadeOut(1, 0, t -> {
+            FlxG.sound.playMusic(Paths.music("freakyMenu"), 0.7);
             FlxG.switchState(new MainMenuState());
+            
         });
 
         FlxTween(camera, {zoom: 1.5}, 1, {ease: FlxEase.sineOut, type: FlxTween.ONESHOT});
