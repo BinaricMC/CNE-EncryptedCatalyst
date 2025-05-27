@@ -43,7 +43,7 @@ function onGamePause(){
 
 function update(elapsed:Float){
     if (!PlayState.instance.paused && video != null) {
-        resync(video?.bitmap.time, Conductor.songPosition, elapsed);
+        resync(video?.bitmap?.time, Conductor.songPosition, elapsed);
         video?.resume();
     }
 }
