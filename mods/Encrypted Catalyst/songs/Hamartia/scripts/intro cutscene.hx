@@ -41,8 +41,27 @@ function onGamePause(){
     video?.pause();
 }
 
-function update(){
-    if (!PlayState.instance.paused && video != null) video?.resume();
+function update(elapsed:Float){
+    if (!PlayState.instance.paused && video != null) {
+        resync(video?.bitmap.time, Conductor.songPosition, elapsed);
+        video?.resume();
+    }
+}
+
+function resync(time:Int, pos:Int, elapsed:Float) {
+	var isOffsync = time != pos;
+	__vocalOffsetViolation = Math.max(0, __vocalOffsetViolation + (isOffsync ? elapsed : -elapsed / 2));
+	if (__vocalOffsetViolation > 25 && time > 999) {
+		syncVideo();
+		__vocalOffsetViolation = 0;
+	}
+}
+
+function syncVideo() {
+    video?.pause();
+    video?.bitmap.time = Conductor.songPosition;
+    video?.resume();
+    trace("RESYNCED VIDEO!");
 }
 
 @:deprecated
