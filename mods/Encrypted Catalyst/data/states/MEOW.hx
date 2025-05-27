@@ -12,8 +12,7 @@ var camFollow:FlxObject;
 
 var btns:Array<FlxButton> = [];
 
-//typing 
-var fullText:String = "";
+//typing
 var typeSpeed:Float = 0.03;
 
 function create() {
