@@ -132,4 +132,11 @@ function update(elapsed:Float){
         FlxTween(camera, {zoom: 1.5}, 1, {ease: FlxEase.sineOut, type: FlxTween.ONESHOT});
         camera.fade(FlxColor.BLACK, 0.95);
     }
+    for (btn in btns) {
+        if (FlxG.mouse.overlaps(btn)) {
+            btn.alpha = 1.0;
+        } else {
+            btn.alpha = 0.4;
+        }
+    }
 }
