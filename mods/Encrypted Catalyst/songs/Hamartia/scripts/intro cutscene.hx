@@ -2,8 +2,9 @@ import hxvlc.flixel.FlxVideoSprite;
 
 var video:FlxVideoSprite;
 
-function postCreate(){
+function create(){
     camGame.visible = false;
+    camHUD.visible = false;
 }
 
 function onSongStart(){
@@ -12,6 +13,8 @@ function onSongStart(){
     video.antialiasing = Options.antialiasing;
     video.bitmap.onPlaying.add(function():Void
     {
+        camHUD.visible = true;
+
         if (video.bitmap != null && video.bitmap.bitmapData != null)
         {
             final scale:Float = Math.min(FlxG.width / video.bitmap.bitmapData.width, FlxG.height / video.bitmap.bitmapData.height);
