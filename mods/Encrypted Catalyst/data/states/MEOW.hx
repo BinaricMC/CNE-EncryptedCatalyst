@@ -19,7 +19,8 @@ var btns:Array<FlxButton> = [];
 */
 
 function create() {
-    FlxG.sound.playMusic(Paths.music("creditstheme"), 0.7); // PLACEHOLDER LMAO
+    camera.flash(FlxColor.BLACK, 1);
+    FlxG.sound.playMusic(Paths.music("creditstheme"), 0.5); // PLACEHOLDER LMAO
 
     adSelectedTxt = new FlxText(0, FlxG.height * 0.825, FlxG.width, "Testing testing 123", 24);
     adSelectedTxt.alignment = 'center';
@@ -67,6 +68,7 @@ function makeButtons(func:Void->Void, serv:String, pos:Array<Float>) {
 function loadBtn(btn:FlxButton, serv:String) {
     btn.loadGraphic(Paths.image('menus/advert/' + serv));
     btn.setGraphicSize(75, 75);
+    btn.alpha = 0.4;
     btn.updateHitbox();
 }
 
@@ -84,6 +86,20 @@ function loadImg(img:Dynamic, x:Float) {
 
     bg.setGraphicSize(FlxG.width * 0.6, FlxG.height * 0.6);
 
+    //Cool, I made a switch case lol
+
+    switch(img){
+        case 'roguetransmission':
+            bg.setGraphicSize(FlxG.width * 1);
+
+        case '2010':
+            bg.setGraphicSize(FlxG.width * 0.7, FlxG.height * 0.5);
+
+        case 'ntff':
+            bg.setGraphicSize(FlxG.width * 0.8, FlxG.height * 0.35);
+
+    }
+
     bg.screenCenter();
 
     bg.x += x;
@@ -100,21 +116,20 @@ function selectAd(service:Int){
     else trace('No URL in json array\'s index ' + service + ', do nothing');
 }
 
-var lerpSpeed = 0.3;
+var lerpSpeed = 0.1;
 
 function update(elapsed:Float){
     camFollow.setPosition(CoolUtil.fpsLerp(camFollow.x, adImages[curAdSelected].getGraphicMidpoint().x, lerpSpeed), ((FlxG.height + (FlxG.mouse.y / 90)) / 2) + 35);
 
     if (controls.LEFT_P) changeAd(-1);
     if (controls.RIGHT_P) changeAd(1);
-    if (controls.ACCEPT) selectAd(0);
 
     if (controls.BACK) {
         FlxG.sound.music.fadeOut(1, 0, t -> {
             FlxG.switchState(new MainMenuState());
         });
 
-        FlxTween(camera, {zoom: 1.2}, 1, {ease: FlxEase.sineOut, type: FlxTween.ONESHOT});
+        FlxTween(camera, {zoom: 1.5}, 1, {ease: FlxEase.sineOut, type: FlxTween.ONESHOT});
         camera.fade(FlxColor.BLACK, 0.95);
     }
 }
