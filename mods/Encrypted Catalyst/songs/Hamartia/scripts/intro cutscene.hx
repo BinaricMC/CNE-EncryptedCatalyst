@@ -26,6 +26,8 @@ function onSongStart(){
     video.bitmap.onEndReached.add(function() {
         video?.destroy();
         camGame.visible = true;
+
+        camGame.flash(0xFF000000, 1);
     });
     add(video);
 
