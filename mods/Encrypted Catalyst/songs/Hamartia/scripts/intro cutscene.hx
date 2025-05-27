@@ -19,7 +19,6 @@ function onSongStart(){
                 final scale:Float = Math.min(FlxG.width / video.bitmap.bitmapData.width, FlxG.height / video.bitmap.bitmapData.height);
 
                 video.setGraphicSize(video.bitmap.bitmapData.width * scale, video.bitmap.bitmapData.height * scale);
-                video.cameras = [camHUD];
                 video.updateHitbox();
                 video.screenCenter();
             }
@@ -35,6 +34,7 @@ function onSongStart(){
 
         video.load(Paths.video("uncleShucks"));
         video.play();
+        video.cameras = [camHUD];
     }
 }
 
