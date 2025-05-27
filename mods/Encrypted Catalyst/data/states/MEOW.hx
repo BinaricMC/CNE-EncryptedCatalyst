@@ -25,7 +25,7 @@ function create() {
     adImages = new FlxGroup();
     add(adImages);
 
-    adSelectedTxt = new FlxTypeText(0, FlxG.height * 0.825, FlxG.width, "Testing testing 123", 24);
+    adSelectedTxt = new FlxTypeText(0, FlxG.height * 0.825, FlxG.width, "The ball tickler. He's here.", 24);
     adSelectedTxt.scrollFactor.set(0, 0);
     adSelectedTxt.start(typeSpeed);
     adSelectedTxt.setFormat(Paths.font('arial-rounded-mt-bold.ttf'), 30, FlxColor.WHITE, 'center', FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -36,12 +36,13 @@ function create() {
 
     for (i in 0...adsList.length) loadImg(adsList[i][2], i);
 
-    changeAd(0);
-
     camFollow = new FlxObject(0, 0, 1, 1);
     add(camFollow);
 
-    FlxG.camera.follow(camFollow, 0.2);
+    camFollow.x = adImages.members[curAdSelected].getMidpoint().x;
+    camFollow.y = 400;
+
+    FlxG.camera.follow(camFollow, null, 0.2); // added the null otherwise the lerp would default to 1
     FlxG.mouse.visible = true;
 
     makeButtons(function() {
@@ -59,10 +60,12 @@ function create() {
     makeButtons(function() {
         selectAd(3);
     }, "gamebanana", [1175, 625]);
+
+    changeAd(0);
 }
 
 function makeButtons(func:Void->Void, serv:String, pos:Array<Float>) {
-    var btn = new FlxButton(pos[0], pos[1], "haiiii :3 " + serv, func);
+    var btn = new FlxButton(pos[0], pos[1], "haiiii :3 gay ass - borja" + serv, func);
     loadBtn(btn, serv);
     btn.label.visible = false;
     add(btn);
@@ -82,6 +85,8 @@ function changeAd(e:Int){
     adSelectedTxt.resetText(adsList[curAdSelected][0]);
     adSelectedTxt.start(typeSpeed);
     adSelectedTxt.screenCenter(FlxAxes.X);
+
+    camFollow.x = adImages.members[curAdSelected].getMidpoint().x;
 }
 
 function loadImg(img:String, index:Int) {
@@ -120,20 +125,20 @@ function selectAd(service:Int){
 }
 
 // PLEASE FIX THIS CODE ITS VERY BROKEN
-var intensity = 4;
+var intensity = 10;
+var offsetLerpSpeed = 0.1;
+
 function adaMethod() {
-    var lots = 4 - 3.935;
+    var lots = 4 - 3.935; // why are we defining this every update-
 
     // I fucking love BIDMAS, or PIMDAS, or however tf you Americans say it
     var camPos = [
         ((FlxG.mouse.x * intensity) / FlxG.width) - ((FlxG.width / intensity) * (lots)),
-        ((FlxG.mouse.y * intensity) / FlxG.height) + 400
+        ((FlxG.mouse.y * intensity) / FlxG.height)
     ];
     // Let's lerp again, because FlxCamera's lerp doesn't do shit
-    camFollow.setPosition(
-        (adImages.members[curAdSelected].getMidpoint().x + camPos[0]),
-        camPos[1]
-    );
+    camera.targetOffset.x = CoolUtil.fpsLerp(camera.targetOffset.x, camPos[0], offsetLerpSpeed);
+    camera.targetOffset.y = CoolUtil.fpsLerp(camera.targetOffset.y, camPos[1], offsetLerpSpeed);
 }
 
 function update(elapsed:Float) {
