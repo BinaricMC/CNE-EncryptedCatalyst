@@ -14,9 +14,6 @@ var btns:Array<FlxButton> = [];
 
 //typing 
 var fullText:String = "";
-var typedText:String = "";
-var textTimer:Float = 0;
-var charIndex:Int = 0;
 var typeSpeed:Float = 0.03;
 
 function create() {
@@ -29,8 +26,9 @@ function create() {
     adImages = new FlxGroup();
     add(adImages);
 
-    adSelectedTxt = new FlxText(0, FlxG.height * 0.825, FlxG.width, "Testing testing 123", 24);
+    adSelectedTxt = new FlxTypeText(0, FlxG.height * 0.825, FlxG.width, "Testing testing 123", 24);
     adSelectedTxt.scrollFactor.set(0, 0);
+    adSelectedTxt.start(typeSpeed);
     adSelectedTxt.setFormat(Paths.font('arial-rounded-mt-bold.ttf'), 30, FlxColor.WHITE, 'center', FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     adSelectedTxt.antialiasing = true;
     add(adSelectedTxt);
@@ -82,12 +80,8 @@ function loadBtn(btn:FlxButton, serv:String) {
 function changeAd(e:Int){
     curAdSelected = FlxMath.wrap(curAdSelected + e, 0, adsList.length-1);
 
-    fullText = adsList[curAdSelected][0];
-    typedText = "";
-    charIndex = 0;
-    textTimer = 0;
-
-    adSelectedTxt.text = "";
+    adSelectedTxt.resetText(adsList[curAdSelected][0]);
+    adSelectedTxt.start(typeSpeed);
     adSelectedTxt.screenCenter(FlxAxes.X);
 }
 
@@ -165,25 +159,5 @@ function update(elapsed:Float) {
     for (btn in btns) {
         var targetAlpha = FlxG.mouse.overlaps(btn) ? 1.0 : 0.4;
         btn.alpha = CoolUtil.fpsLerp(btn.alpha, targetAlpha, 0.2);
-    }
-
-    // FlxTypeText exists you know
-    if (charIndex == 0) typeSpeed = 0.03;
-    if (charIndex < fullText.length) {
-        textTimer += elapsed;
-
-        if (textTimer >= typeSpeed) {
-            textTimer = 0;
-
-            typedText += fullText.charAt(charIndex);
-            if (StringTools.contains(typedText, '\n')) {
-                // NEW LINE!
-                typeSpeed = 0.02;
-            }
-
-            charIndex++;
-            adSelectedTxt.text = typedText;
-            adSelectedTxt.screenCenter(FlxAxes.X);
-        }
     }
 }
