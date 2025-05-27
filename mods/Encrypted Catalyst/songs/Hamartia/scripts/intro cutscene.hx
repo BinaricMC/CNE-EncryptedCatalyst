@@ -1,9 +1,13 @@
 import hxvlc.flixel.FlxVideoSprite;
 
-var video:FlxVideoSprite = new FlxVideoSprite(0, 0);
+var video:FlxVideoSprite;
 
 function postCreate(){
     camGame.visible = false;
+}
+
+function onSongStart(){
+    video = new FlxVideoSprite(0, 0);
 
     video.antialiasing = Options.antialiasing;
     video.bitmap.onPlaying.add(function():Void
@@ -24,9 +28,7 @@ function postCreate(){
         camGame.visible = true;
     });
     add(video);
-}
 
-function onSongStart(){
     video.load(Paths.video("uncleShucks"));
     video.play();
 }
@@ -40,7 +42,7 @@ function onGamePause(){
 }
 
 function update(){
-    if (!PlayState.instance.paused) video?.resume();
+    if (!PlayState.instance.paused && video != null) video?.resume();
 }
 
 @:deprecated
