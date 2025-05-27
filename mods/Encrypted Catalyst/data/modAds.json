@@ -1,43 +1,49 @@
 [
     [
-        "Pibby: Apocalypse",
+        "Pibby: Apocalypse\n(by BAUDAS70)",
         ["https://www.youtube.com/watch?v=ENLsLhY8JNk", "https://x.com/FunkinPibby", "https://gamejolt.com/games/Pibby/786001", "https://gamebanana.com/wips/73842"],
         "pa"
     ],
 
     [
-        "Funk Archive: Unnamed BA Oneshot",
+        "Funk Archive: Unnamed BA Oneshot\n(by Trake)",
         ["https://www.youtube.com/watch?v=DEQSXQCVYpc", "", "", "https://gamebanana.com/mods/496238"],
         "bluearchive"
     ],
 
     [
-        "Pibby Corrupted",
+        "Pibby Corrupted\n(by Dboy)",
         ["https://www.youtube.com/watch?v=qMDPooCLAks", "https://x.com/PibbyFunkin", "", "https://gamebanana.com/mods/344757"],
         "pc"
     ],
 
     [
-        "Rogue Transmission",
+        "Rogue Transmission\n(by Erick Animations)",
         ["https://www.youtube.com/watch?v=CV4dwSpS_l4", "https://x.com/FridayRogue", "", ""],
         "roguetransmission"
     ],
 
     [
-        "Pibby Oggy",
+        "Pibby Oggy\n(by AshishXMC)",
         ["https://www.youtube.com/watch?v=0vSXW8tlgdc", "https://x.com/PibbyOggy", "https://gamejolt.com/games/Oggy/713759", ""],
         "pibbyoggy"
     ],
 
     [
-        "Project 2010",
+        "Project 2010\n(by yoroimationarts)",
         ["https://www.youtube.com/watch?v=2KWwX9s1t_c", "https://x.com/Project_CN_", "", ""],
         "2010"
     ],
 
     [
-        "No Time For Funkin",
+        "No Time For Funkin\n(by KaffaZ)",
         ["https://www.youtube.com/watch?v=Mb7edZqiVSM", "https://x.com/NoTimeForFunkin", "https://gamejolt.com/games/notimeforfunkin/891386", ""],
         "ntff"
+    ],
+
+    [
+        "Coming Soon...\n(Here be dragons...)",
+        ["", "", "", ""],
+        "herebedragons"
     ]
 ]
