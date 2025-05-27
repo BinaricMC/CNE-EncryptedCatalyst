@@ -1,5 +1,6 @@
 import flixel.FlxObject;
 import flixel.ui.FlxButton;
+import flixel.text.FlxTextBorderStyle;
 
 var adsList:Array<Dynamic> = [];
 var adImages:Array<FlxSprite> = [];
@@ -10,23 +11,22 @@ var camFollow:FlxObject;
 
 var btns:Array<FlxButton> = [];
 
-/*
-[
-    [No Time For Funkin', https://www.youtube.com/watch?v=AhBYB4NfDlg],
-    [Test 2 (PREMEDITATED JX), https://www.youtube.com/watch?v=KIsa7i5hJ58],
-    [Test (NO URL)]
-]
-*/
+//typing 
+var fullText:String = "";
+var typedText:String = "";
+var textTimer:Float = 0;
+var charIndex:Int = 0;
+var typeSpeed:Float = 0.03;
 
 function create() {
     camera.flash(FlxColor.BLACK, 1);
-    FlxG.sound.playMusic(Paths.music("creditstheme"), 0.5); // PLACEHOLDER LMAO
+    FlxG.sound.playMusic(Paths.music("creditstheme"), 0.5); 
 
     adSelectedTxt = new FlxText(0, FlxG.height * 0.825, FlxG.width, "Testing testing 123", 24);
-    adSelectedTxt.alignment = 'center';
     adSelectedTxt.scrollFactor.set(0, 0);
-    add(adSelectedTxt);
+    adSelectedTxt.setFormat(Paths.font('arial-rounded-mt-bold.ttf'), 30, FlxColor.WHITE, 'center', FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
     adSelectedTxt.antialiasing = true;
+    add(adSelectedTxt);
 
     adsList = CoolUtil.parseJson('data/modAds.json');
 
@@ -75,9 +75,15 @@ function loadBtn(btn:FlxButton, serv:String) {
 function changeAd(e:Int){
     curAdSelected = FlxMath.wrap(curAdSelected + e, 0, adsList.length-1);
 
-    adSelectedTxt.text = adsList[curAdSelected][0];
+    fullText = adsList[curAdSelected][0];
+    typedText = "";
+    charIndex = 0;
+    textTimer = 0;
+
+    adSelectedTxt.text = "";
     adSelectedTxt.screenCenter(FlxAxes.X);
 }
+
 
 function loadImg(img:Dynamic, x:Float) {
     var bg = new FlxSprite(0, 0);
@@ -133,10 +139,18 @@ function update(elapsed:Float){
         camera.fade(FlxColor.BLACK, 0.95);
     }
     for (btn in btns) {
-        if (FlxG.mouse.overlaps(btn)) {
-            btn.alpha = 1.0;
-        } else {
-            btn.alpha = 0.4;
+        var targetAlpha = FlxG.mouse.overlaps(btn) ? 1.0 : 0.4;
+        btn.alpha = CoolUtil.fpsLerp(btn.alpha, targetAlpha, 0.2);
+
+    }
+    if (charIndex < fullText.length) {
+        textTimer += elapsed;
+        if (textTimer >= typeSpeed) {
+            textTimer = 0;
+            typedText += fullText.charAt(charIndex);
+            charIndex++;
+            adSelectedTxt.text = typedText;
+            adSelectedTxt.screenCenter(FlxAxes.X);
         }
     }
 }
