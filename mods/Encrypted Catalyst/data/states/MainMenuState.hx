@@ -1,3 +1,5 @@
+import funkin.menus.ModSwitchMenu;
+
 var txts:FlxGroup;
 
 function update(){
@@ -8,6 +10,8 @@ function update(){
         });
         camera.fade(FlxColor.BLACK, 0.95);
     }
+
+    if (controls.SWITCHMOD && FlxG.state.subState == null) openSubState(new ModSwitchMenu());
 }
 
 function create() {
@@ -29,6 +33,7 @@ function createText(string:String, pos:Array<Float>){
     text.scrollFactor.set(0, 0);
     text.x = pos[0];
     text.y = pos[1];
+    text.antialiasing = Options.antialiasing;
 
     add(text);
     txts.add(text);
