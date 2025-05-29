@@ -86,6 +86,8 @@ function changeAd(e:Int){
     adSelectedTxt.start(typeSpeed);
     adSelectedTxt.screenCenter(FlxAxes.X);
 
+    CoolUtil.playMenuSFX();
+
     camFollow.x = adImages.members[curAdSelected].getMidpoint().x;
 }
 
