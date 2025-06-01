@@ -13,6 +13,7 @@ var txts:FlxGroup;
 var lowerText:FlxTypeText;
 var typeSpeed:Float = 0.05;
 var tabText:FlxText;
+var composerCredit:FlxText;
 
 // menu functions
 var curSelected:Int = 0;
@@ -54,6 +55,13 @@ function create() {
     tabText.size = 20;
     tabText.scrollFactor.set();
     add(tabText);
+
+    composerCredit = new FlxText(110, FlxG.height - 695, 0, "Menu Theme By:");
+    composerCredit.y -= composerCredit.height;
+    composerCredit.font = Paths.font("black-ground.ttf");
+    composerCredit.size = 24;
+    composerCredit.scrollFactor.set();
+    add(composerCredit);
 
     // Only plays the menu music if nothing else is playing
     if (!FlxG.sound.music.playing) FlxG.sound.playMusic(Paths.music("freakyMenu"), 0.7);
