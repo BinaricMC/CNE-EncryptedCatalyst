@@ -4,9 +4,13 @@ import funkin.editors.EditorPicker;
 
 import openfl.ui.Mouse;
 
+// states
+import funkin.options.OptionsMenu;
+import funkin.menus.credits.CreditsMain;
+
 // text functions
 var txts:FlxGroup;
-var lowerText:FlxText;
+var lowerText:FlxTypeText;
 var typeSpeed:Float = 0.05;
 var tabText:FlxText;
 
@@ -14,7 +18,7 @@ var tabText:FlxText;
 var curSelected:Int = 0;
 var canSelect:Bool = true;
 var menus = ["StoryMode", "FreeplayState", "Credits", "AdsState", "Options"];
-
+var states = [new StoryMenuState(), new FreeplayState(), new CreditsMain(), new ModState('AdsState'), new OptionsMenu()];
 
 function create() {
     //background shit
@@ -68,7 +72,7 @@ function postCreate()
     FlxG.mouse.visible = true;
 
 function update(){
-    if (canSelect) {
+    if (canSelect && FlxG.state.subState == null) {
         if (controls.SWITCHMOD && FlxG.state.subState == null) 
             openSubState(new ModSwitchMenu());
 
@@ -117,21 +121,6 @@ function changeSelect(e:Int){
 function select(){
     CoolUtil.playMenuSFX(1);
     FlxFlicker.flicker(txts.members[curSelected], 1, 0.04, true, false);
-    
-    if (menus[curSelected] == "StoryMode")
-        FlxG.switchState(new StoryMenuState());
 
-    if (menus[curSelected] == "FreeplayState")
-        FlxG.switchState(new FreeplayState());
-
-    if (menus[curSelected] == "Credits")
-        FlxG.switchState(new CreditsMain());
-
-    if (menus[curSelected] == 'AdsState') 
-        FlxG.sound.music.fadeOut(0.95, 0, t -> FlxG.sound.playMusic(Paths.music("creditstheme"), 0.7));
-
-    if (menus[curSelected] == "Options")
-        FlxG.switchState(new OptionsMenu());
-
-    new FlxTimer().start(1, function() FlxG.switchState(new ModState(menus[curSelected])));
+    new FlxTimer().start(1, function() FlxG.switchState(states[curSelected]));
 }
