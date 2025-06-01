@@ -133,10 +133,8 @@ function update(elapsed:Float) {
     if (controls.RIGHT_P) changeAd(1);
 
     if (controls.BACK) {
-        FlxG.sound.music.fadeOut(1, 0, t -> {
-            FlxG.sound.playMusic(Paths.music("freakyMenu"), 0.7);
-            FlxG.switchState(new MainMenuState());
-        });
+        //FlxG.sound.playMusic(Paths.music("freakyMenu"), 0.7);
+        FlxG.switchState(new MainMenuState());
 
         FlxTween(camera, {zoom: 1.5}, 1, {ease: FlxEase.sineOut, type: FlxTween.ONESHOT});
         camera.fade(FlxColor.BLACK, 0.95);
