@@ -13,7 +13,7 @@ var tabText:FlxText;
 // menu functions
 var curSelected:Int = 0;
 var canSelect:Bool = true;
-var menus = ["StoryMode", "FreeplayState", "Credits", "MEOW", "Options"];
+var menus = ["StoryMode", "FreeplayState", "Credits", "AdsState", "Options"];
 
 
 function create() {
@@ -127,7 +127,7 @@ function select(){
     if (menus[curSelected] == "Credits")
         FlxG.switchState(new CreditsMain());
 
-    if (menus[curSelected] == 'MEOW') 
+    if (menus[curSelected] == 'AdsState') 
         FlxG.sound.music.fadeOut(0.95, 0, t -> FlxG.sound.playMusic(Paths.music("creditstheme"), 0.7));
 
     if (menus[curSelected] == "Options")
