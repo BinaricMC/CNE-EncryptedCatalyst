@@ -18,7 +18,6 @@ var composerCredit:FlxText;
 // menu functions
 var curSelected:Int = 0;
 var canSelect:Bool = true;
-var menus = ["StoryMode", "FreeplayState", "Credits", "AdsState", "Options"];
 var states = [new StoryMenuState(), new FreeplayState(), new CreditsMain(), new ModState('AdsState'), new OptionsMenu()];
 
 function create() {
@@ -34,6 +33,12 @@ function create() {
     outlines = new FunkinSprite(-710, -407).loadGraphic(Paths.image('menus/mainmenu/outlines'));
     outlines.scale.set(0.5, 0.5);
     add(outlines);
+
+    menuArrow = new FunkinSprite(325, 0).loadGraphic(Paths.image('menus/mainmenu/arrow'));
+    menuArrow.scale.set(0.5, 0.5);
+    add(menuArrow);
+
+    
 
     //text
     new FlxTimer().start(2, function(tmr:FlxTimer)
@@ -56,7 +61,7 @@ function create() {
     tabText.scrollFactor.set();
     add(tabText);
 
-    composerCredit = new FlxText(110, FlxG.height - 695, 0, "Menu Theme By:");
+    composerCredit = new FlxText(110, FlxG.height - 695, 0, "Menu Theme By: S_tormy");
     composerCredit.y -= composerCredit.height;
     composerCredit.font = Paths.font("black-ground.ttf");
     composerCredit.size = 24;
@@ -124,6 +129,30 @@ function changeSelect(e:Int){
     curSelected = FlxMath.wrap(curSelected + e, 0, txts.length-1);
 
     txts.members[curSelected].color = FlxColor.GREEN;
+    
+    switch (curSelected)
+    {
+        case 0:
+            menuArrow.x = 300;
+            menuArrow.y = 105;
+
+        case 1:
+            menuArrow.x = 235;
+            menuArrow.y = 205;
+
+        case 2:
+            menuArrow.x = 430;
+            menuArrow.y = 305;
+        
+        case 3:
+            menuArrow.x = 410;
+            menuArrow.y = 405;
+
+        case 4:
+            menuArrow.x = 225;
+            menuArrow.y = 505;
+
+    }
 }
 
 function select(){
