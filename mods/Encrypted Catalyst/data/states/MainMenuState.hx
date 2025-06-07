@@ -2,6 +2,8 @@ import funkin.menus.ModSwitchMenu;
 import flixel.effects.FlxFlicker;
 import funkin.editors.EditorPicker;
 
+import flixel.ui.FlxBar;
+
 import openfl.ui.Mouse;
 
 // states
@@ -14,6 +16,9 @@ var lowerText:FlxTypeText;
 var typeSpeed:Float = 0.05;
 var tabText:FlxText;
 var composerCredit:FlxText;
+
+// music bar test
+var musicBar:FlxBar;
 
 // menu functions
 var curSelected:Int = 0;
@@ -43,7 +48,7 @@ function create() {
     //text
     new FlxTimer().start(2, function(tmr:FlxTimer)
         {
-            lowerText = new FlxTypeText(5, FlxG.height - 10, 0, '"AN FNF MOD BASED ON THE TALES OF DODGE GREENLY IN THE ARTISTIC STYLE AND VISION OF O0OPS."');
+            lowerText = new FlxTypeText(5, FlxG.height - 10, 0, '"AN FNF MOD BASED ON THE TALES OF DODGE GREENLEY IN THE ARTISTIC STYLE AND VISION OF O0OPS."');
             lowerText.y -= lowerText.height;
             lowerText.size = 20;
             lowerText.scrollFactor.set();
@@ -70,6 +75,11 @@ function create() {
 
     // Only plays the menu music if nothing else is playing
     if (!FlxG.sound.music.playing) FlxG.sound.playMusic(Paths.music("freakyMenu"), 0.7);
+
+    // music bar wip
+    musicBar = new FlxBar(composerCredit.x, composerCredit.y+30, 0, composerCredit.width, 10, FlxG.sound.music, 'time', 0, FlxG.sound.music.length);
+    add(musicBar);
+
     camera.flash(FlxColor.BLACK, 0.95);
 
     txts = new FlxGroup();
