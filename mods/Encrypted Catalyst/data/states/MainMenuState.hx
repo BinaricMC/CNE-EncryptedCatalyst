@@ -84,7 +84,11 @@ function create() {
 function postCreate()
     FlxG.mouse.visible = true;
 
-function update(){
+var updTime:Float = 0.0;
+
+function update(e:Float){
+    updTime += e;
+
     if (canSelect && FlxG.state.subState == null) {
         if (controls.SWITCHMOD && FlxG.state.subState == null) 
             openSubState(new ModSwitchMenu());
@@ -105,6 +109,8 @@ function update(){
         persistentUpdate = false;
         persistentDraw = true;
     }
+
+    menuArrow.offset.x = Math.sin(updTime * 1.9) * 2.5;
 }
 
 
@@ -128,31 +134,16 @@ function changeSelect(e:Int){
     CoolUtil.playMenuSFX();
     curSelected = FlxMath.wrap(curSelected + e, 0, txts.length-1);
 
+    /* 
+    the green was supposed to be a placeholder to know which option was being chosen
+    do we keep it
+    */
     txts.members[curSelected].color = FlxColor.GREEN;
-    
-    switch (curSelected)
-    {
-        case 0:
-            menuArrow.x = 300;
-            menuArrow.y = 105;
 
-        case 1:
-            menuArrow.x = 235;
-            menuArrow.y = 205;
-
-        case 2:
-            menuArrow.x = 430;
-            menuArrow.y = 305;
-        
-        case 3:
-            menuArrow.x = 410;
-            menuArrow.y = 405;
-
-        case 4:
-            menuArrow.x = 225;
-            menuArrow.y = 505;
-
-    }
+    menuArrow.setPosition(
+        txts.members[curSelected].x + (txts.members[curSelected].width),
+        txts.members[curSelected].y - (txts.members[curSelected].height / 2.3)
+    );
 }
 
 function select(){
