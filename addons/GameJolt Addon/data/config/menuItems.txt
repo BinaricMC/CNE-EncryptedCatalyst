@@ -1,5 +1,0 @@
-story mode
-freeplay
-options
-credits
-login
