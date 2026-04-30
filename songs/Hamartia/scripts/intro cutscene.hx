@@ -30,7 +30,7 @@ function onSongStart(){
 
             camGame.flash(0xFF000000, 1);
         });
-        add(video);
+        //add(video);
 
         video.load(Paths.video("uncleShucks"));
         video.play();
@@ -48,18 +48,8 @@ function onGamePause(){
 
 function update(elapsed:Float){
     if (!PlayState.instance.paused && video != null) {
-        resync(video?.bitmap?.time, Conductor.songPosition, elapsed);
         video?.resume();
     }
-}
-
-function resync(time:Int, pos:Int, elapsed:Float) {
-	var isOffsync = time != pos;
-	__vocalOffsetViolation = Math.max(0, __vocalOffsetViolation + (isOffsync ? elapsed : -elapsed / 2));
-	if (__vocalOffsetViolation > 25 && time > 999) {
-		syncVideo();
-		__vocalOffsetViolation = 0;
-	}
 }
 
 function syncVideo() {

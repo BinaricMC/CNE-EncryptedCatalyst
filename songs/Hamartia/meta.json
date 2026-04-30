@@ -1,16 +1,14 @@
 {
-	"beatsPerMeasure": 4,
+	"color": "#73BFFD",
 	"opponentModeAllowed": false,
-	"coopAllowed": false,
-	"stepsPerBeat": 4,
-	"bpm": 128,
 	"difficulties": [
 		"Normal"
 	],
-	"needsVoices": true,
-	"parsedColor": -9191427,
-	"displayName": "Hamartia",
 	"icon": "icon-ecfinn",
-	"name": "Hamartia",
-	"color": "#73BFFD"
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Hamartia",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 128
 }
